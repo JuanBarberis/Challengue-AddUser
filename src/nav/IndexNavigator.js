@@ -1,14 +1,12 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import StackNav from "./stack/StackNav"
-import UserNavigation from './stack/StackNav'
+import { StackNav, UserNavigation } from "./stack/StackNav"
 import { NavigationContainer } from "@react-navigation/native"
 
-const AppNavigator = () => {
+const IndexNavigator = () => {
 
-    const user = useSelector(state => state.user.name)
+    const user = useSelector(state => state.user)
     console.log(user)
-
     return (
         <NavigationContainer>
             {
@@ -24,4 +22,4 @@ const AppNavigator = () => {
     )
 }
 
-export default AppNavigator
+export default IndexNavigator

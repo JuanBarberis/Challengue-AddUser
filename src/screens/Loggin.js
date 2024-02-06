@@ -8,13 +8,12 @@ const Loggin = () => {
     const [state, setState] = useState({
         name: '',
     })
-    const user = useSelector(state => state.user)
+    const user = useSelector(state => state.user.name)
     const dispatch = useDispatch()
 
     const handleLogin = () => {
-        dispatch(logUser({ name: state.name }))
+        dispatch(logUser({ name: state.name, state: true }))
     }
-
     return (
         <View style={styles.container}>
             <TextInput

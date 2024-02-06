@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 import Home from '../../screens/Home';
 import AddUser from '../../screens/AddUser';
 import Loggin from '../../screens/Loggin';
 
-const Stack = createNativeStackNavigator();
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 
 const UserNavigation = () => {
@@ -20,14 +20,32 @@ const UserNavigation = () => {
 }
 
 const StackNav = () => {
+
+    const userIsLoged = [
+        {
+            name: 'home',
+            component: Home
+        },
+        {
+            name: 'add-user',
+            component: AddUser
+        }
+    ]
     return (
 
-        <Stack.Navigator>
-            <Stack.Screen name="home" component={Home} />
-            <Stack.Screen name="add-usser" component={AddUser} />
+        <Stack.Navigator
+           
+        >
+            {
+                userIsLoged.map((item) => {
+                    return (
+                        <Stack.Screen name={item.name} component={item.component} />
+                    )
+                })
+            }
         </Stack.Navigator>
 
     )
 }
 
-export default { StackNav, UserNavigation }
+export { StackNav, UserNavigation }
