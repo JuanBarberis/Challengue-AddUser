@@ -6,7 +6,6 @@ import { NavigationContainer } from "@react-navigation/native"
 const IndexNavigator = () => {
 
     const user = useSelector(state => state.user)
-    console.log(user)
     return (
         <NavigationContainer>
             {

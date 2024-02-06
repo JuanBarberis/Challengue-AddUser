@@ -4,6 +4,8 @@ import AddUser from '../../screens/AddUser';
 import Loggin from '../../screens/Loggin';
 
 import { createStackNavigator } from '@react-navigation/stack';
+import BottomTab from '../bottom/BottomTab';
+import Settings from '../../screens/Settings';
 
 const Stack = createStackNavigator();
 
@@ -23,23 +25,28 @@ const StackNav = () => {
 
     const userIsLoged = [
         {
-            name: 'home',
-            component: Home
+            name: 'settings',
+            component: Settings
         },
         {
             name: 'add-user',
             component: AddUser
         }
     ]
+
     return (
 
         <Stack.Navigator
-           
+            initialRouteName='bottom-tab'
+            screenOptions={{
+                headerShown: false
+            }}
         >
+            <Stack.Screen name='bottom-tab' component={BottomTab} />
             {
-                userIsLoged.map((item) => {
+                userIsLoged.map((item, index) => {
                     return (
-                        <Stack.Screen name={item.name} component={item.component} />
+                        <Stack.Screen key={index} name={item.name} component={item.component} />
                     )
                 })
             }
